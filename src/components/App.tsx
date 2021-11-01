@@ -3,28 +3,37 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import PrivateRoutes from "../routes/PrivateRoutes";
-// import PublicRoutes from "../routes/PublicRoutes";
-// import routes from "../routes/routes";
+import routePathConst from "../const/routePathConst";
+
+import { privateRoutes } from "../routes/privateRoutes";
+import { publicRoutes } from "../routes/publicRoutes";
 
 import Loader from "react-loader-spinner";
 import Layout from "./Layout";
 
-import { HomePage } from "../pages/HomePage";
-import { TodosPage } from "../pages/TodosPage";
-import { UsersPage } from "../pages/UsersPage";
+const App: React.FC = () => {
+  const user = false;
 
-const App = () => {
   return (
     <BrowserRouter>
       <Layout>
         <Suspense fallback={Loader}>
-          <Switch>
-            <Route path="/" component={HomePage} exact />
-            <Route path="/todos" component={TodosPage} exact />
-            <Route path="/users" component={UsersPage} exact />
-            <Redirect to="/" />
-          </Switch>
+          {user ? (
+            <Switch>
+              {privateRoutes.map(({ path, component, exact }) => (
+                <Route path={path} component={component} exact={exact} />
+              ))}
+              <Redirect to={routePathConst.HOME_PAGE} />
+            </Switch>
+          ) : (
+            <Switch>
+              {publicRoutes.map(({ path, component, exact }) => (
+                <Route path={path} component={component} exact={exact} />
+              ))}
+              <Redirect to={routePathConst.LOGIN_PAGE} />
+            </Switch>
+          )}
+
           <ToastContainer />
         </Suspense>
       </Layout>

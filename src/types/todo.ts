@@ -6,6 +6,13 @@ export interface TodoState {
   limit: number;
 }
 
+interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
 export enum TodoActionTypes {
   FETCH_TODOS = "FETCH_TODOS",
   FETCH_TODO_SUCCESS = "FETCH_TODO_SUCCESS",
@@ -19,7 +26,7 @@ interface FetchTodoAction {
 
 interface FetchTodoSuccessAction {
   type: TodoActionTypes.FETCH_TODO_SUCCESS;
-  payload: any[]; // TO-DO create interface (id, text, date, complited)
+  payload: Todo[];
 }
 
 interface FetchTodoErrorAction {

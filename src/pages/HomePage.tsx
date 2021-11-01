@@ -1,6 +1,6 @@
 import TextLoop from "react-text-loop";
 
-export const HomePage: React.FC = () => {
+const HomePage: React.FC = () => {
   return (
     <div className="homePage">
       <div className="homePageSlogan">
@@ -21,3 +21,5 @@ export const HomePage: React.FC = () => {
     </div>
   );
 };
+
+export default HomePage;

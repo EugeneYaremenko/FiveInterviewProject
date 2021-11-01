@@ -1,9 +1,11 @@
 import TodoList from "../components/TodoList";
 
-export const TodosPage: React.FC = () => {
+const TodosPage: React.FC = () => {
   return (
     <>
       <TodoList />
     </>
   );
 };
+
+export default TodosPage;
