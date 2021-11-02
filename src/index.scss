@@ -1,0 +1,10 @@
+@import "./styles//mixins.scss";
+
+.examples {
+  @include examples;
+  padding: 20px;
+
+  & button:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}

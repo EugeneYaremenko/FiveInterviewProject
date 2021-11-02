@@ -1,0 +1,67 @@
+.todos {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.todosList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.todos li {
+  width: 70%;
+  padding: 5px;
+}
+
+.pagi {
+  display: flex;
+  justify-content: center;
+}
+
+.pagi div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+  margin: 5px;
+  width: 4%;
+  background: #272727;
+  color: #f6f4e6;
+  cursor: pointer;
+}
+
+input,
+label {
+  cursor: pointer;
+}
+
+.pagItem {
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid rgb(37, 34, 34);
+}
+
+.pagItemActive {
+  font-size: large;
+  vertical-align: middle;
+  border: 3px solid#ec371e;
+}
+
+.MDBCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MDBBtn {
+  max-width: 20%;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.MDBCard p {
+  margin: 5px;
+}
