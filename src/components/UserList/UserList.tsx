@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-import { AvatarGenerator } from "random-avatar-generator";
 import defaultAvatar from "../../img/defaultAvatar.jpg";
 import { MDBBtn } from "mdb-react-ui-kit";
 import styles from "./userList.module.css";
@@ -13,9 +12,8 @@ import { notify } from "../../services/notify";
 
 const UserList: React.FC = () => {
   const { users, error, loading } = useTypedSelector((state) => state.users);
-  const { fetchUsers } = useActions();
 
-  const avatarGenerator = new AvatarGenerator();
+  const { fetchUsers } = useActions();
 
   useEffect(() => {
     fetchUsers();
@@ -35,11 +33,8 @@ const UserList: React.FC = () => {
         {users.map((user) => (
           <li key={user.id} className={styles.userListItem}>
             <div className={styles.userListItemImg}>
-              {avatarGenerator.generateRandomAvatar() ? (
-                <img
-                  src={avatarGenerator.generateRandomAvatar()}
-                  alt={user.name}
-                />
+              {user.avatar ? (
+                <img src={user.avatar} alt={user.name} />
               ) : (
                 <img src={defaultAvatar} alt={user.name} />
               )}

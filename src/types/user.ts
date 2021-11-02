@@ -22,6 +22,7 @@ export interface IUser {
     catchPhrase: string;
     bs: string;
   };
+  avatar: string;
 }
 
 export interface UserState {

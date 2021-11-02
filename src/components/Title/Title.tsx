@@ -1,0 +1,9 @@
+import React from "react";
+
+const Title: React.FC<{ title: string }> = ({ title }) => {
+  console.log("Rendering Title");
+
+  return <h2>{title}</h2>;
+};
+
+export default React.memo(Title);

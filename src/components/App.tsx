@@ -1,4 +1,5 @@
-import { Suspense } from "react";
+import { Suspense, useContext } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,9 +11,11 @@ import { publicRoutes } from "../routes/publicRoutes";
 
 import Loader from "react-loader-spinner";
 import Layout from "./Layout";
+import { Context } from "../index";
 
 const App: React.FC = () => {
-  const user = false;
+  const { auth } = useContext(Context);
+  const [user] = useAuthState(auth);
 
   return (
     <BrowserRouter>
@@ -21,14 +24,24 @@ const App: React.FC = () => {
           {user ? (
             <Switch>
               {privateRoutes.map(({ path, component, exact }) => (
-                <Route path={path} component={component} exact={exact} />
+                <Route
+                  key={path}
+                  path={path}
+                  component={component}
+                  exact={exact}
+                />
               ))}
-              <Redirect to={routePathConst.HOME_PAGE} />
+              <Redirect to={routePathConst.USER_PAGE} />
             </Switch>
           ) : (
             <Switch>
               {publicRoutes.map(({ path, component, exact }) => (
-                <Route path={path} component={component} exact={exact} />
+                <Route
+                  key={path}
+                  path={path}
+                  component={component}
+                  exact={exact}
+                />
               ))}
               <Redirect to={routePathConst.LOGIN_PAGE} />
             </Switch>

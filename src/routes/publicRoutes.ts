@@ -11,10 +11,10 @@ export const publicRoutes: IRoutes[] = [
     restricted: false,
   },
   {
-    path: routePathConst.SIGNUP_PAGE,
-    label: "Signup",
+    path: routePathConst.EXAMPLE_PAGE,
+    label: "Examples",
     exact: true,
-    component: lazy(() => import("../pages/SignupPage")),
+    component: lazy(() => import("../pages/ExamplePage")),
     restricted: false,
   },
   {
